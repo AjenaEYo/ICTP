@@ -3,8 +3,8 @@ import numpy as np
 import os
 from time import time
 
-from lib.WindowCapture import WindowCapture
-from lib.Vision import Vision
+from module.WindowCapture import WindowCapture
+from module.Vision import Vision
 
 # Change the working directory to the folder this script is in.
 # Doing this because I'll be putting the files from each video in their own folder on GitHub
