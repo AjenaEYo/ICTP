@@ -12,9 +12,17 @@ from module.Vision import Vision
 # Doing this because I'll be putting the files from each video in their own folder on GitHub
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
+def draw_box(image, bounds,color = 'yellow',width=2):
+    for bound in bounds:
+        (top_left, top_right, bottom_right, bottom_left)=bound[0]
+        top_left = (int(top_left[0]), int(top_left[1]))
+        bottom_right = (int(bottom_right[0]), int(bottom_right[1]))
+        cv.rectangle(img=image, pt1=top_left, pt2=bottom_right, color=(255, 0, 0), thickness=10)
+        
 
+    
 # initialize the WindowCapture class
-wincap = WindowCapture('팟플레이어')
+wincap = WindowCapture('1234.mkv - 팟플레이어')
 # initialize the Vision class
 #vision_limestone = Vision('albion_limestone.jpg')
 
@@ -35,7 +43,8 @@ while(True):
     #points = vision_limestone.find(screenshot, 0.5, 'rectangles')
     #points = vision_gunsnbottle.find(screenshot, 0.7, 'points')
     bounds = reader.readtext(screenshot, add_margin=0.55, width_ths=0.7, link_threshold=0.8, decoder='beamsearch', blocklist='=-')  #Reading with bounds
-    bounds
+    #print(bounds)
+    draw_box(screenshot,bounds)
     cv.imshow('Computer Vision', screenshot)
     # debug the loop rate
     print('FPS {}'.format(1 / (time() - loop_time)))

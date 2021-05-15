@@ -1,5 +1,7 @@
 import numpy as np
-import win32gui, win32ui, win32con
+import win32ui
+import win32gui
+import win32con
 
 
 class WindowCapture:
