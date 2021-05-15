@@ -2,6 +2,8 @@ import cv2 as cv
 import numpy as np
 import os
 from time import time
+from googletrans import Translator
+import easyocr
 
 from module.WindowCapture import WindowCapture
 from module.Vision import Vision
@@ -21,7 +23,8 @@ wincap = WindowCapture('팟플레이어')
 wincap = WindowCapture()
 vision_gunsnbottle = Vision('gunsnbottle.jpg')
 '''
-
+reader = easyocr.Reader(['en']);
+translator = Translator();
 loop_time = time()
 while(True):
 
@@ -31,6 +34,8 @@ while(True):
     # display the processed image
     #points = vision_limestone.find(screenshot, 0.5, 'rectangles')
     #points = vision_gunsnbottle.find(screenshot, 0.7, 'points')
+    bounds = reader.readtext(screenshot, add_margin=0.55, width_ths=0.7, link_threshold=0.8, decoder='beamsearch', blocklist='=-')  #Reading with bounds
+    bounds
     cv.imshow('Computer Vision', screenshot)
     # debug the loop rate
     print('FPS {}'.format(1 / (time() - loop_time)))
