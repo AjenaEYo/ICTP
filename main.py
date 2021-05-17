@@ -23,7 +23,11 @@ def draw_text(image, bounds,color = 'yellow',width=2):
         text = bound[1];
         top_left = (int(top_left[0]), int(top_left[1]))
         bottom_right = (int(bottom_right[0]), int(bottom_right[1]))
-        draw.text(top_left,text,font=font,fill=(0,0,0))
+        draw.text(top_left,text,font=font,fill=(255,0,0))
+    
+    image=np.array(img)
+    return image
+
         #cv.rectangle(img=image, pt1=top_left, pt2=bottom_right, color=(255, 0, 0), thickness=10)
 
 def draw_box(image, bounds,color = 'yellow',width=2):
@@ -33,13 +37,13 @@ def draw_box(image, bounds,color = 'yellow',width=2):
         top_left = (int(top_left[0]), int(top_left[1]))
         bottom_right = (int(bottom_right[0]), int(bottom_right[1]))
 
-        cv.rectangle(img=image, pt1=top_left, pt2=bottom_right, color=(255, 0, 0), thickness=10)
+        cv.rectangle(img=image, pt1=top_left, pt2=bottom_right, color=(0, 255, 255), thickness=1)
         #cv.putText(image, text, (top_left[0], bottom_left[1] - 10),cv.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
         
 
     
 # initialize the WindowCapture class
-wincap = WindowCapture('1234.mkv - 팟플레이어')
+wincap = WindowCapture('1234.mp4 - 팟플레이어')
 # initialize the Vision class
 #vision_limestone = Vision('albion_limestone.jpg')
 
@@ -71,7 +75,7 @@ while(True):
         y = list(bound)
         y[1] = text_ko
         bounds_ko.append(tuple(y))
- 
+    screenshot=draw_text(screenshot,bounds_ko)
     draw_box(screenshot,bounds_ko)
     cv.imshow('Computer Vision', screenshot)
     # debug the loop rate
