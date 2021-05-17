@@ -4,7 +4,7 @@ import os
 from time import time
 import easyocr
 from module.WindowCapture import WindowCapture
-from translate import Translator
+from kakaotrans import Translator
 
 from PIL import ImageFont, ImageDraw, Image
 
@@ -52,9 +52,8 @@ wincap = WindowCapture()
 vision_gunsnbottle = Vision('gunsnbottle.jpg')
 '''
 reader = easyocr.Reader(['en']);
-translator= Translator(to_lang="ko")
-translation = translator.translate("This is a pen.")
-print(translation)
+translator= Translator()
+
 loop_time = time()
 while(True):
 
@@ -66,7 +65,7 @@ while(True):
     #print(bounds)
     for bound  in bounds:
         text = bound[1]
-        text_ko = translator.translate(text)
+        text_ko = translator.translate(text,src='en',tgt='kr')
         y = list(bound)
         y[1] = text_ko
         bounds_ko.append(tuple(y))
