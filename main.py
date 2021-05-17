@@ -3,9 +3,8 @@ import numpy as np
 import os
 from time import time
 import easyocr
-from google_trans_new import google_translator
 from module.WindowCapture import WindowCapture
-from module.Vision import Vision
+from translate import Translator
 
 from PIL import ImageFont, ImageDraw, Image
 
@@ -53,25 +52,21 @@ wincap = WindowCapture()
 vision_gunsnbottle = Vision('gunsnbottle.jpg')
 '''
 reader = easyocr.Reader(['en']);
-
-translator = google_translator()
-#translate_text = translator.translate('I am GROOT',lang_src='en',lang_tgt='ko')
-#print(translate_text)
+translator= Translator(to_lang="ko")
+translation = translator.translate("This is a pen.")
+print(translation)
 loop_time = time()
 while(True):
 
     # get an updated image of the game
     screenshot = wincap.get_screenshot()
 
-    # display the processed image
-    #points = vision_limestone.find(screenshot, 0.5, 'rectangles')
-    #points = vision_gunsnbottle.find(screenshot, 0.7, 'points')
     bounds = reader.readtext(screenshot, add_margin=0.55, width_ths=0.7, link_threshold=0.8, decoder='beamsearch', blocklist='=-')  #Reading with bounds
     bounds_ko = []
     #print(bounds)
     for bound  in bounds:
         text = bound[1]
-        text_ko = translator.translate(text,lang_tgt='ko',lang_src='en')
+        text_ko = translator.translate(text)
         y = list(bound)
         y[1] = text_ko
         bounds_ko.append(tuple(y))
