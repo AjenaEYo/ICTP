@@ -19,3 +19,11 @@ pip install torch==1.8.1+cu102 torchvision==0.9.1+cu102 torchaudio===0.8.1 -f ht
 cuda 버전 맞춰서 설치.
 
 Python 3.7.9에서 작성
+
+``` bash
+python main.py
+```
+캡쳐할 윈도우 좌클릭
+번역할 화면에서 T버튼 클릭(ICTP창에서 눌러야함)
+아무키 누르면 다시 캡쳐모드
+종료는 캡쳐모드에서 q
