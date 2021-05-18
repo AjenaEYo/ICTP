@@ -7,7 +7,7 @@ from module.WindowCapture import WindowCapture
 from kakaotrans import Translator
 
 from PIL import ImageFont, ImageDraw, Image
-
+import module.selectWindow as selectWindow
 
 # Change the working directory to the folder this script is in.
 # Doing this because I'll be putting the files from each video in their own folder on GitHub
@@ -42,7 +42,12 @@ def draw_box(image, bounds,color = 'yellow',width=2):
 
     
 # initialize the WindowCapture class
-wincap = WindowCapture('1234.mkv - 팟플레이어')
+
+selectWindow.on()
+
+hwnd = selectWindow.prehwnd
+
+wincap = WindowCapture(hwnd)
 # initialize the Vision class
 #vision_limestone = Vision('albion_limestone.jpg')
 
@@ -55,6 +60,7 @@ reader = easyocr.Reader(['en']);
 translator= Translator()
 
 loop_time = time()
+cv.namedWindow('Computer Vision', cv.WINDOW_NORMAL)
 while(True):
 
     # get an updated image of the game
@@ -62,8 +68,10 @@ while(True):
 
    
     # debug the loop rate
-    print('FPS {}'.format(1 / (time() - loop_time)))
+    fps='FPS {}'.format(1 / (time() - loop_time))
+    print(fps)
     loop_time = time()
+    cv.putText(screenshot, fps, (0, 10),cv.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
     cv.imshow('Computer Vision', screenshot)
     # press 'q' with the output window focused to exit.
     # waits 1 ms every loop to process key presses
@@ -87,9 +95,9 @@ while(True):
             bounds_ko.append(tuple(y))
         screenshot=draw_text(screenshot,bounds_ko)
         draw_box(screenshot,bounds_ko)
+        fps='FPS {}'.format(1 / (time() - loop_time))
+        cv.putText(screenshot, fps, (0, 10),cv.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
         cv.imshow('Computer Vision', screenshot)
-        print('FPS {}'.format(1 / (time() - loop_time)))
-        
         cv.waitKey(0)
         
 

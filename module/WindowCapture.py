@@ -2,7 +2,8 @@ import numpy as np
 import win32ui
 import win32gui
 import win32con
-
+import ctypes
+ctypes.windll.user32.SetProcessDPIAware()
 
 class WindowCapture:
 
@@ -16,16 +17,16 @@ class WindowCapture:
     offset_y = 0
 
     # constructor
-    def __init__(self, window_name=None):
+    def __init__(self, hwnd):
         # find the handle for the window we want to capture.
         # if no window name is given, capture the entire screen
-        if window_name is None:
-            self.hwnd = win32gui.GetDesktopWindow()
-        else:
-            self.hwnd = win32gui.FindWindow(None, window_name)
-            if not self.hwnd:
-                raise Exception('Window not found: {}'.format(window_name))
-
+        # if window_name is None:
+        #     self.hwnd = win32gui.GetDesktopWindow()
+        # else:
+        #     self.hwnd = win32gui.FindWindow(None, window_name)
+        #     if not self.hwnd:
+        #         raise Exception('Window not found: {}'.format(window_name))
+        self.hwnd = hwnd
         # get the window size
         window_rect = win32gui.GetWindowRect(self.hwnd)
         self.w = window_rect[2] - window_rect[0]
