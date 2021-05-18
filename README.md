@@ -1,5 +1,6 @@
 # ICTP
-Translate the text of the image into a specific language
+윈도우창을 캡쳐해서 번역해준다.<br />
+window capture->ocr->translation->text draw->view
 ![Screenshot](https://github.com/AjenaEYo/ICTP/blob/develop/example/ictp_first.gif)
 
 해결해야할 과제
@@ -16,7 +17,7 @@ easyocr gpu에서 돌릴려면
 ``` bash
 pip install torch==1.8.1+cu102 torchvision==0.9.1+cu102 torchaudio===0.8.1 -f https://download.pytorch.org/whl/torch_stable.html
 ```
-cuda 버전 맞춰서 설치.
+cuda 버전 맞춰서 설치. https://pytorch.org/ 가면 받을수 있다.
 
 Python 3.7.9에서 작성
 
