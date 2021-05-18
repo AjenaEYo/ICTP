@@ -7,14 +7,15 @@ Translate the text of the image into a specific language
 2. 번역 횟수 제한 > 카카오번역으로 임시로 변환, Translation 뉴럴네트워크를 박아야할까나..
 3. 캡쳐 영역 > 완료
 
-
+``` bash
 pip install easyocr
 pip install pywin32
 pip install opencv-python
-
+```
 easyocr gpu에서 돌릴려면
+``` bash
 pip install torch==1.8.1+cu102 torchvision==0.9.1+cu102 torchaudio===0.8.1 -f https://download.pytorch.org/whl/torch_stable.html
-
+```
 cuda 버전 맞춰서 설치.
 
 Python 3.7.9에서 작성
