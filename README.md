@@ -11,6 +11,7 @@ window capture->ocr->translation->text draw->view
 ``` bash
 pip install easyocr
 pip install pywin32
+pip install pynput
 pip install opencv-python
 ```
 easyocr gpu에서 돌릴려면
