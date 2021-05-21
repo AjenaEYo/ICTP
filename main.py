@@ -16,7 +16,7 @@ os.chdir(os.path.dirname(os.path.abspath(__file__)))
 def draw_text(image, bounds,color = 'yellow',width=2):
     img = Image.fromarray(image)
     draw = ImageDraw.Draw(img)
-    font=ImageFont.truetype("fonts/gulim.ttc",10)
+    font=ImageFont.truetype("fonts/gulim.ttc",15)
     for bound  in bounds:
         (top_left, top_right, bottom_right, bottom_left)=bound[0]
         text = bound[1];
