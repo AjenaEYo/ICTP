@@ -20,7 +20,7 @@ pip install torch==1.8.1+cu102 torchvision==0.9.1+cu102 torchaudio===0.8.1 -f ht
 ```
 cuda 버전 맞춰서 설치. https://pytorch.org/ 가면 받을수 있다.
 
-Python 3.7.9 64bit에서 작성(https://www.python.org/downloads/release/python-379/)
+Python 3.7.9 64bit에서 작성(https://www.python.org/downloads/release/python-379/)(https://www.python.org/ftp/python/3.7.9/python-3.7.9-amd64.exe)
 
 ``` bash
 python main.py
