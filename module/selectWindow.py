@@ -93,7 +93,7 @@ def on_move(x,y):
     if prehwnd != selectwnd:
         prehwnd = selectwnd
         try:
-            draw_rect_fast()
+            draw_rect()
         except:
             pass
    
