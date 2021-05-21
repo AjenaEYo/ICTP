@@ -96,7 +96,10 @@ while(True):
         #print(bounds)
         for bound  in bounds:
             text = bound[1]
-            text_ko = translator.translate(text,src='en',tgt='kr')
+            try:
+                text_ko = translator.translate(text,src='en',tgt='kr')
+            except:
+                pass
             y = list(bound)
             y[1] = text_ko
             bounds_ko.append(tuple(y))
