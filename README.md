@@ -8,6 +8,14 @@ window capture->ocr->translation->text draw->view
 2. 번역 횟수 제한 > 카카오번역으로 임시로 변환, Translation 뉴럴네트워크를 박아야할까나..
 3. 캡쳐 영역 > 완료
 
+Python 3.7.9 64bit에서 작성(https://www.python.org/downloads/release/python-379/)
+(https://www.python.org/ftp/python/3.7.9/python-3.7.9-amd64.exe)
+
+pip install
+``` bash
+python get-pip.py
+```
+
 ``` bash
 pip install easyocr
 pip install pywin32
@@ -20,8 +28,7 @@ pip install torch==1.8.1+cu102 torchvision==0.9.1+cu102 torchaudio===0.8.1 -f ht
 ```
 cuda 버전 맞춰서 설치. https://pytorch.org/ 가면 받을수 있다.
 
-Python 3.7.9 64bit에서 작성(https://www.python.org/downloads/release/python-379/)
-(https://www.python.org/ftp/python/3.7.9/python-3.7.9-amd64.exe)
+
 
 ``` bash
 python main.py
