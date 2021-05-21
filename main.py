@@ -16,7 +16,7 @@ os.chdir(os.path.dirname(os.path.abspath(__file__)))
 def draw_text(image, bounds,color = 'yellow',width=2):
     img = Image.fromarray(image)
     draw = ImageDraw.Draw(img)
-    font=ImageFont.truetype("fonts/gulim.ttc",30)
+    font=ImageFont.truetype("fonts/gulim.ttc",15)
     for bound  in bounds:
         (top_left, top_right, bottom_right, bottom_left)=bound[0]
         text = bound[1];
@@ -90,7 +90,8 @@ while(True):
         break
     elif k == ord('t'): # 's' key
         loop_time = time()
-        bounds = reader.readtext(screenshot, add_margin=0.55, width_ths=0.7, link_threshold=0.8, decoder='beamsearch', blocklist='=-')  #Reading with bounds
+        #bounds = reader.readtext(screenshot, add_margin=0.55, width_ths=0.7, link_threshold=0.8, decoder='beamsearch', blocklist='=-')  #Reading with bounds
+        bounds = reader.readtext(screenshot)
         bounds_ko = []
         #print(bounds)
         for bound  in bounds:
