@@ -25,6 +25,7 @@ pip install easyocr
 pip install pywin32
 pip install pynput
 pip install opencv-python
+pip install kakaotrans
 ```
 easyocr gpu에서 돌릴려면
 ``` bash
