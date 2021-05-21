@@ -11,11 +11,14 @@ window capture->ocr->translation->text draw->view
 Python 3.7.9 64bit에서 작성(https://www.python.org/downloads/release/python-379/)
 (https://www.python.org/ftp/python/3.7.9/python-3.7.9-amd64.exe)
 
+인스톨 버전으로 설치하면 pip같이 설치되지만 안되시는분은 아래 참고.<br />
 pip install
 ``` bash
 curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 python get-pip.py
 ```
+
+환경 변수에 python.exe pip.exe가 들어 있는 폴더가 설정되어 있어야 cmd에서 아래 명령 수행가능.<br />
 
 ``` bash
 pip install easyocr
