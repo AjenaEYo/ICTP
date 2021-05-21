@@ -16,13 +16,19 @@ os.chdir(os.path.dirname(os.path.abspath(__file__)))
 def draw_text(image, bounds,color = 'yellow',width=2):
     img = Image.fromarray(image)
     draw = ImageDraw.Draw(img)
-    font=ImageFont.truetype("fonts/gulim.ttc",20)
+    font=ImageFont.truetype("fonts/gulim.ttc",30)
     for bound  in bounds:
         (top_left, top_right, bottom_right, bottom_left)=bound[0]
         text = bound[1];
         top_left = (int(top_left[0]), int(top_left[1]))
         bottom_right = (int(bottom_right[0]), int(bottom_right[1]))
-        draw.text(top_left,text,font=font,fill=(255,0,0))
+        size = font.getsize(text)
+        fontimg = Image.new('RGB', size=size, color=(0, 0, 0))
+        fontdraw = ImageDraw.Draw(fontimg)
+        fontdraw.text((0, 0), text, fill=(209, 239, 8), font=font)
+        img.paste(fontimg,top_left)
+        # draw.rectangle((top_left[0], top_left[1], bottom_right[0], bottom_right + h), fill='black')
+        # draw.text(top_left,text,font=font,fill=(255,255,255))
     
     image=np.array(img)
     return image
@@ -93,8 +99,9 @@ while(True):
             y = list(bound)
             y[1] = text_ko
             bounds_ko.append(tuple(y))
-        screenshot=draw_text(screenshot,bounds_ko)
+        
         draw_box(screenshot,bounds_ko)
+        screenshot=draw_text(screenshot,bounds_ko)
         fps='FPS {}'.format(1 / (time() - loop_time))
         cv.putText(screenshot, fps, (0, 10),cv.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
         cv.imshow('Computer Vision', screenshot)
