@@ -13,6 +13,7 @@ Python 3.7.9 64bit에서 작성(https://www.python.org/downloads/release/python-
 
 pip install
 ``` bash
+curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 python get-pip.py
 ```
 
