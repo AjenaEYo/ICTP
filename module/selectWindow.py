@@ -59,7 +59,7 @@ def draw_rect_fast():
     ###|          |            
     ###|          |
     ###|----------n###
-    
+
     for x in range(100):
         win32gui.SetPixel(dc, m[0]+x, m[1], red)
         win32gui.SetPixel(dc, m[0]+x, m[1]+1, red)
@@ -93,7 +93,7 @@ def on_move(x,y):
     if prehwnd != selectwnd:
         prehwnd = selectwnd
         try:
-            draw_rect()
+            draw_rect_fast()
         except:
             pass
    
