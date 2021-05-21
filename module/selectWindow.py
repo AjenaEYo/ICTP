@@ -44,6 +44,46 @@ def draw_rect():
 
     past_coordinates = (m[0], m[1], n[0], n[1])
 
+
+def draw_rect_fast():
+    global past_coordinates
+    rect = win32gui.CreateRoundRectRgn(*past_coordinates, 2 , 2)
+    win32gui.RedrawWindow(hwnd, past_coordinates, rect, win32con.RDW_INVALIDATE)
+    selectwnd=win32gui.WindowFromPoint(win32api.GetCursorPos())
+    window_rect = win32gui.GetWindowRect(selectwnd)
+    m = window_rect[0],window_rect[1]
+    n = window_rect[2],window_rect[3]
+
+    ###m-----------###
+    ###|          |
+    ###|          |            
+    ###|          |
+    ###|----------n###
+    
+    for x in range(100):
+        win32gui.SetPixel(dc, m[0]+x, m[1], red)
+        win32gui.SetPixel(dc, m[0]+x, m[1]+1, red)
+        win32gui.SetPixel(dc, m[0]+x, m[1]+2, red)
+        #win32gui.SetPixel(dc, m[0]+x, m[1]+10, red)
+        for y in range(100):
+            win32gui.SetPixel(dc, m[0], m[1]+y, red)
+            win32gui.SetPixel(dc, m[0]+1, m[1]+y, red)
+            win32gui.SetPixel(dc, m[0]+2, m[1]+y, red)
+            #win32gui.SetPixel(dc, m[0]+10, m[1]+y, red)
+    
+    for x in range(100):
+        win32gui.SetPixel(dc, n[0]-x, n[1], red)
+        win32gui.SetPixel(dc, n[0]-x, n[1]+1, red)
+        win32gui.SetPixel(dc, n[0]-x, n[1]+2, red)
+        #win32gui.SetPixel(dc, m[0]+x, m[1]+10, red)
+        for y in range(100):
+            win32gui.SetPixel(dc, n[0], n[1]-y, red)
+            win32gui.SetPixel(dc, n[0]+1, n[1]-y, red)
+            win32gui.SetPixel(dc, n[0]+2, n[1]-y, red)
+            #win32gui.SetPixel(dc, m[0]+10, m[1]+y, red)
+
+    past_coordinates = (m[0], m[1], n[0], n[1])
+
 prehwnd = -1
 
 def on_move(x,y):
@@ -71,3 +111,6 @@ def on():
         on_click=on_click,
         on_scroll=on_scroll) as listener:
         listener.join()
+
+if __name__ == "__main__":
+	on()
